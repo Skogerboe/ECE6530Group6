@@ -19,10 +19,10 @@ Overview:
 
 
 Group Member Tasks:
-  - Tyson Skogerboe:
-  - Maili Vu:
-  - Emily Yang:
-  - Chandra Mauli Dubey:
+  - Tyson Skogerboe: Sectin 5.1 and 5.2
+  - Maili Vu: Section 5.3
+  - Emily Yang: Section 4.1
+  - Chandra Mauli Dubey: Section 4.2
 
 How to run code:
   - TBD
