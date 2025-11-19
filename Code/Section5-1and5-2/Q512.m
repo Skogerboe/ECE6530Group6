@@ -44,26 +44,40 @@ end
 % determine the Bandpass filters for each octave.
 
 % b. Trial and Error Filter Design
-% L2 = 4*fs / (OcthighendsHz(2)-OctlowendsHz(2));
-L2 = 551;
-[hoct2, Hoct2] = BPFilter(L2, OctcenterHz(2), fs);
-% f2 = 0:fs/(L2-1):fs;
 
+L2 = 250;       % Determined Length L2 for Octave 2
+[hoct2, Hoct2] = BPFilter(L2, OctcenterHz(2), fs);  % BandPass Filter for Octave 2
+
+L3 = 125;       % Determined Length L3 for Octave 3
+[hoct3, Hoct3] = BPFilter(L3, OctcenterHz(3), fs);  % BandPass Filter for Octave 3
+
+L4 = 63;        % Determined Length L4 for Octave 4
+[hoct4, Hoct4] = BPFilter(L4, OctcenterHz(4), fs);  % BandPass Filter for Octave 4
+
+L5 = 31;        % Determined Length L5 for Octave 5
+[hoct5, Hoct5] = BPFilter(L5, OctcenterHz(5), fs);  % BandPass Filter for Octave 5
+
+L6 = 16;        % Determined Length L6 for Octave 6
+[hoct6, Hoct6] = BPFilter(L6, OctcenterHz(6), fs);  % BandPass Filter for Octave 6
+hold off;
 
 % Function 1 - scaling a bandpass filter based on filter size, center
 % frequency, and sampling frequency.
 function [hscaled, Hscaled] = BPFilter(L, Fc, Fs)
-    % h = zeros(1,L);
     n = 0:1:L-1;
     N = 8182;
     wc = 2*pi*Fc/Fs;
     h = (0.54 - 0.46*cos(2*pi*n/(L-1))) .* cos(wc*(n - (L-1)/2));
     H = fft(h,N);
-    % H = freqz(h, 1, 8192);
     beta = 1 / max(abs(H));
     hscaled  = beta * h; 
-    % Hscaled = hscaled .* exp(-1i*wc*(0:L-1));
     Hscaled = fft(hscaled,N);
-    f = 0:Fc/(L-1):Fc;
-    plot(f, hscaled);
+    w = 0:2*pi/(N-1):2*pi;
+    f = 0:Fs/(N-1):Fs;
+    plot(w, abs(Hscaled));
+    hold on;
+    xlim([0 pi]);
+    xlabel('Frequency(rad)');
+    ylabel('Magnitude');
+    title('Frequency Response Magnitude Plot');
 end
