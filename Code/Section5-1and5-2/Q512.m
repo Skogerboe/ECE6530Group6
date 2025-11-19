@@ -68,12 +68,11 @@ function [hscaled, Hscaled] = BPFilter(L, Fc, Fs)
     N = 8182;
     wc = 2*pi*Fc/Fs;
     h = (0.54 - 0.46*cos(2*pi*n/(L-1))) .* cos(wc*(n - (L-1)/2));
-    H = fft(h,N);
+    H = freqz(h,1,N);
     beta = 1 / max(abs(H));
     hscaled  = beta * h; 
-    Hscaled = fft(hscaled,N);
-    w = 0:2*pi/(N-1):2*pi;
-    f = 0:Fs/(N-1):Fs;
+    Hscaled = freqz(hscaled,1,N);
+    w = 0:pi/(N-1):pi;
     plot(w, abs(Hscaled));
     hold on;
     xlim([0 pi]);
