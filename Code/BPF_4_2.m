@@ -102,13 +102,14 @@ for i = 1:length(L_list)
     xlabel('Normalized Frequency (\times\pi rad/sample)');
     ylabel('|H(e^{j\omega})|');
     title(sprintf('Magnitude Response, L = %d', L));
-      hold on;
+     hold on;
     yline(thresh, 'r--', '50% level', 'LineWidth', 1.2); 
     plot([pb_low(i) pb_high(i)]/pi, [thresh thresh], 'ro', 'MarkerSize', 6, ...
-         'LineWidth', 1.2); 
-          % Vertical lines at passband edges
+         'LineWidth', 1.2);     
+    % Vertical lines at passband edges
 xline(pb_low(i)/pi,  'g--', 'LineWidth', 1.2);
 xline(pb_high(i)/pi, 'g--', 'LineWidth', 1.2);
+
 end
 
 % Store the results in a table 
@@ -117,3 +118,12 @@ resultsB = table(L_list.', pb_low.'/pi, pb_high.'/pi, pb_width.'/pi, ...
 
 disp('Passband Edges and Width for L = 21, 41, 81:');
 disp(resultsB);
+
+% From the measured passband widths, we observe that the width of the
+% passband is inversely related to the filter length L. When L is
+% approximately doubled (e.g., from 41 to 81), the passband width is
+% roughly halved. When L is approximately halved (e.g., from 41 to 21),
+% the passband width roughly doubles. Thus, longer Hamming FIR filters
+% produce narrower passbands (better frequency selectivity), while
+% shorter filters produce wider passbands.
+
