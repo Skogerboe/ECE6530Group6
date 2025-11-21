@@ -49,9 +49,15 @@ resultsTable = table((omega_list'/pi), magAtOmega', phAtOmega', ...
 
 disp(resultsTable);
 
-%{Explanation-
-For L = 41, the magnitude response shows a clear band centered at ω = 0.25π, indicating that the Hamming BPF successfully passes the desired frequency component. The filter exhibits strong attenuation at the other tested frequencies (0, 0.1π, 0.4π, 0.5π, and 0.75π), with magnitude values near zero, confirming that these lie in the stopband. The Hamming window produces very small stopband ripples (<0.01), consistent with the lab description. The phase response is approximately linear in the passband, as expected for a symmetric FIR filter. Overall, the measured values match the theoretical behavior of a Hamming-windowed bandpass filter.
-%}
+% For L = 41, the magnitude response shows a clear band centered at ω = 0.25π,
+%  indicating that the Hamming BPF successfully passes the desired frequency component.
+%  The filter exhibits strong attenuation at the other tested frequencies 
+% (0, 0.1π, 0.4π, 0.5π, and 0.75π), with magnitude values near zero, 
+% confirming that these lie in the stopband.
+%  The Hamming window produces very small stopband ripples (<0.01),
+%  consistent with the lab description.
+%  The phase response is approximately linear in the passband, 
+% as expected for a symmetric FIR filter. 
 
 %% 4.2 Part (b)  Passband width vs filter length (50% level)
 
