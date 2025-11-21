@@ -100,6 +100,9 @@ for i = 1:length(L_list)
     yline(thresh, 'r--', '50% level', 'LineWidth', 1.2); 
     plot([pb_low(i) pb_high(i)]/pi, [thresh thresh], 'ro', 'MarkerSize', 6, ...
          'LineWidth', 1.2); 
+          % Vertical lines at passband edges
+xline(pb_low(i)/pi,  'g--', 'LineWidth', 1.2);
+xline(pb_high(i)/pi, 'g--', 'LineWidth', 1.2);
 end
 
 % Store the results in a table 
