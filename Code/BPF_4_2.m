@@ -126,4 +126,61 @@ disp(resultsB);
 % the passband width roughly doubles. Thus, longer Hamming FIR filters
 % produce narrower passbands (better frequency selectivity), while
 % shorter filters produce wider passbands.
+%% 4.2(c) Output signal of the length-41 Hamming BPF (by hand summary)
+% The input to the L = 41 Hamming BPF is
+%   x[n] = 2 + 2*cos(0.1*pi*n + pi/3) + cos(0.25*pi*n - pi/3).
+% Using the magnitude and phase from 4.2(a) we have, for this filter:
+%   |H(0)|       ≈ 0.00735,  ∠H(0)       ≈ π        (DC term, stopband)
+%   |H(0.1π)|    ≈ 0.00735,  ∠H(0.1π)    ≈ -π       (tone 1, stopband)
+%   |H(0.25π)|   ≈ 1.0,      ∠H(0.25π)   = φ_c      (tone 2, passband)
+%
+% For an LTI system with frequency response H(e^{jω}), an input
+%   A*cos(ωn + φ)
+% produces an output
+%   A|H(e^{jω})| * cos(ωn + φ + ∠H(e^{jω})).
+%
+% Applying this to each term of x[n]:
+%   DC term (ω = 0):
+%       y0[n] = 2|H(0)|cos(0 + ∠H(0)) ≈ 2*0.00735*cos(π) ≈ -0.0147
+%       → a very small negative constant (heavily attenuated).
+%
+%   Tone 1 (ω = 0.1π):
+%       y1[n] = 2|H(0.1π)|cos(0.1π*n + pi/3 + ∠H(0.1π))
+%             ≈ 2*0.00735*cos(0.1π*n + (phase)) ≈ 0.0147*cos(0.1π*n + …)
+%       → very small amplitude, also in the stopband.
+%
+%   Tone 2 (ω = 0.25π):
+%       y2[n] = |H(0.25π)|cos(0.25π*n - pi/3 + ∠H(0.25π))
+%             ≈ cos(0.25π*n - pi/3 + φ_c)
+%       → lies at the center of the passband and passes with gain ≈ 1.
+%
+% Combining the contributions, the output can be written as
+%   y[n] = y0[n] + y1[n] + y2[n]
+%   y[n] ≈ -0.0147+0.0147 cos⁡(0.1πn-2π/3)+ cos⁡(0.25πn+2π/3)
+% Thus, the output is dominated by the 0.25π sinusoid, while the DC and
+% 0.1π components are almost completely suppressed because they lie in
+% the stopband of the bandpass filter.
+
+%% 4.2(d) Why the L = 41 BPF passes ω = ±0.25π and rejects others
+% The frequency response of the length-41 Hamming BPF has a narrow
+% passband centered at ω = 0.25π (and, by symmetry, at ω = -0.25π).
+% From part (b), the 50% passband edges for L = 41 are approximately
+% at ω_low/π ≈ 0.2067 and ω_high/π ≈ 0.294, so only frequencies in
+% the interval [0.2067π, 0.294π] are passed with significant gain.
+%
+% The input signal in part (c) contains components at ω = 0, 0.1π,
+% and 0.25π. The components at 0 and 0.1π lie well outside the
+% passband and therefore fall in the stopband where |H(e^{jω})| is
+% close to zero. These terms are strongly attenuated and appear in
+% the output only as very small residuals.
+%
+% In contrast, the component at ω = 0.25π lies at the center of the
+% passband, where |H(e^{j0.25π})| ≈ 1 and the phase response is
+% roughly linear. As a result, this sinusoid is passed with almost
+% no attenuation and only a phase shift determined by ∠H(e^{j0.25π}).
+%
+% Because the passband of the L = 41 Hamming BPF is narrow and
+% centered at ±0.25π, the filter is able to pass the components at
+% ω = ±0.25π while reducing or rejecting all other frequency
+% components of the input signal.
 
