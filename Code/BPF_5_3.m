@@ -8,14 +8,21 @@ clear;
 close all;
 clc;
 
+% Pulling information from Sections 5.1 & 5.2
 addpath('Section5-1and5-2\');
 
-% 5.3 (a) generate x(t) 
+% Get the filter coefficients from 5.2
+Q512;
+
+% 5.3 (a) generate x(t) using sampling rate fs = 8000 Hz
 fs = 8000;
 t = 0:1/fs:0.85;
 length = size(t,2);
 xx = zeros(1,length);
 
+% x(t) = cos(2*pi*220*t) for 0s <= t < 0.25s
+% x(t) = cos(2*pi*880*t) for 0.3s <= t < 0.55s
+% x(t) = cos(2*pi*440*t) + cos(2*pi*1760*t) for 0.6s <= t < 0.85s
 for i = 1:length
     if i < (1 + 0.25*fs)
         xx(i) = cos(2*pi * 220 * t(i));
@@ -28,15 +35,14 @@ end
 
 figure;
 plot(t, xx);
+sgtitle('Piano Frequency Sinusoidal Signal');
 xlabel('Time (s)');
 ylabel('x(t)');
-title('5.3 (a)');
 grid on;
+hold off;
 
 % 5.3 (b) Filter xx through five filters
 
-% Get the filter coefficients from 5.2
-Q512;
 
 % Put coefficients through each filter from 5.2
 xx_2 = filter(hoct2, 1, xx);
@@ -45,34 +51,35 @@ xx_4 = filter(hoct4, 1, xx);
 xx_5 = filter(hoct5, 1, xx);
 xx_6 = filter(hoct6, 1, xx);
 
+
 % 5.3 (c) Make 5 subplots in one figure using subplot(5,1,n)
 
 figure;
 subplot(5,1,1);
-sgtitle('5.3 (c)');
+sgtitle('Filtered x(t) Signal Using Section 5.2 Filter Bank');
 plot(t, xx_2);
 ylabel('Octave 2');
-xlabel('t');
+xlabel('Time (s)');
 
 subplot(5,1,2);
 plot(t, xx_3);
 ylabel('Octave 3');
-xlabel('t');
+xlabel('Time (s)');
 
 subplot(5,1,3);
 plot(t, xx_4);
 ylabel('Octave 4');
-xlabel('t');
+xlabel('Time (s)');
 
 subplot(5,1,4);
 plot(t, xx_5);
 ylabel('Octave 5');
-xlabel('t');
+xlabel('Time (s)');
 
 subplot(5,1,5);
 plot(t, xx_6);
 ylabel('Octave 6');
-xlabel('t');
+xlabel('Time (s)');
 
 % 5.3 (d) Validate that output signals have correct magnitude & phase
 
