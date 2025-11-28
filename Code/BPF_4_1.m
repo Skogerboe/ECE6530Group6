@@ -132,3 +132,6 @@ legend(["L=20","L=40","L=80"]);
 xlabel("Normalized Frequency")
 ylabel("|H|")
 title("Frequency Response vs Filter Length")
+
+% The width of the passband is inversely related to filter length (L). In
+% summary, longer filters lead to higher frequency selectivity.
