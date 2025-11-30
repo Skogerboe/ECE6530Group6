@@ -29,7 +29,7 @@ How to run code:
     1) BPF_4_1_poster.m
     2) BPF_5_3.m
     3) Q512.m
-  - Place all three files in same MATLAB folder.
+  - Place all three files in the same MATLAB folder.
   - Run BPF_4_1_poster.m to generate the filter plots.
   - Run BPF_5_3.3 (uses Q512.m) to generate the filter-bank results.
   
