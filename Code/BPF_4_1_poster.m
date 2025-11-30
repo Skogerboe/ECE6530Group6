@@ -79,7 +79,7 @@ for i = 1:length(L_list)
     ax = gca;
     ax.XAxis.FontSize = tickFont;
     ax.YAxis.FontSize = tickFont;
-    legend([p1, p2],"Rectangular Window","Hamming Window",'FontSize',15.0,"NumColumns",2);
+    legend([p1, p2],"Rectangular Window","Hamming Window",'FontSize',8.0,"NumColumns",2);
 end
 
 % Store the results in a table 
