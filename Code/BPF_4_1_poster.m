@@ -11,9 +11,9 @@ pb_high_hamm  = zeros(size(L_list));   % upper passband edge (rad)
 pb_width_hamm = zeros(size(L_list));   % passband width (rad)
 
 figure;  % new figure for magnitude responses
-titleFont = 30.0;
-axesFont = 25.0;
-tickFont = 20.0;
+titleFont = 16.0;
+axesFont = 12.0;
+tickFont = 10.0;
 
 for i = 1:length(L_list)
     L = L_list(i);
@@ -52,8 +52,8 @@ for i = 1:length(L_list)
     thresh   = 0.5 * peak_mag;          % 50% of peak
     idx_pass_hamm = find(magHL_hamm >= thresh);   % indices in passband
 
-    pb_low_hamm(i)   = wL(idx_pass_hamm(1));      % lower edge (rad)
-    pb_high_hamm(i)  = wL(idx_pass_hamm(end));    % upper edge (rad)
+    pb_low_hamm(i)   = wL_hamm(idx_pass_hamm(1));      % lower edge (rad)
+    pb_high_hamm(i)  = wL_hamm(idx_pass_hamm(end));    % upper edge (rad)
     pb_width_hamm(i) = pb_high_hamm(i) - pb_low_hamm(i);
 
     % Plot magnitude response for this L
