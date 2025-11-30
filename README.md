@@ -25,6 +25,12 @@ Group Member Tasks:
   - Chandra Mauli Dubey: Section 4.2
 
 How to run code:
-  - TBD
+  - Download the following MATLAB scripts from this repository:
+    1) BPF_4_1_poster.m
+    2) BPF_5_3.m
+    3) Q512.m
+  - Place all three files in same MATLAB folder.
+  - Run BPF_4_1_poster.m to generate the filter plots.
+  - Run BPF_5_3.3 (uses Q512.m) to generate the filter-bank results.
   
   
