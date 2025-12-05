@@ -48,4 +48,14 @@ How to run code:
  ** Some of the indivual scripts reference some of the other scripts, so maintaining the paths will allow for running without error.
  ** Downloading individual scripts and running them may result in failed script execution since paths are no longer maintained.
   
-  
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HMTL REPORTS:
+
+[main.html](https://github.com/user-attachments/files/23952715/main.html)
+
+[main4_2.html](https://github.com/user-attachments/files/23952720/main4_2.html)
+[main4_1.html](https://github.com/user-attachments/files/23952719/main4_1.html)
+[main5_3.html](https://github.com/user-attachments/files/23952726/main5_3.html)
+[main5_2.html](https://github.com/user-attachments/files/23952725/main5_2.html)
+[main5_1.html](https://github.com/user-attachments/files/23952724/main5_1.html)
