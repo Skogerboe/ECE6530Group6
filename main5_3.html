@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>main5_3</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-12-04">
+<meta name="DC.source" content="main5_3.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<pre class="codeinput">
+<span class="comment">% Section 5.3: Piano Octave Decoding</span>
+<span class="comment">%   Maili Vu (u1169721)</span>
+
+<span class="comment">% frequency = 2^((n-49)/12) * 440 Hz</span>
+<span class="comment">%   where 'n' = key #</span>
+
+clear;
+close <span class="string">all</span>;
+clc;
+
+<span class="comment">% Pulling information from Sections 5.1 &amp; 5.2</span>
+<span class="comment">% addpath('LabP14_Exercise5.2\');</span>
+
+<span class="comment">% Get the filter coefficients from 5.2</span>
+<span class="comment">% Q512;</span>
+run(<span class="string">"main5_2.m"</span>);   <span class="comment">% Run section 5.1 and 5.2 for BP Filters</span>
+
+<span class="comment">% 5.3 (a) generate x(t) using sampling rate fs = 8000 Hz</span>
+fs = 8000;
+t = 0:1/fs:0.85;
+length = size(t,2);
+xx = zeros(1,length);
+
+<span class="comment">% x(t) = cos(2*pi*220*t) for 0s &lt;= t &lt; 0.25s</span>
+<span class="comment">% x(t) = cos(2*pi*880*t) for 0.3s &lt;= t &lt; 0.55s</span>
+<span class="comment">% x(t) = cos(2*pi*440*t) + cos(2*pi*1760*t) for 0.6s &lt;= t &lt; 0.85s</span>
+<span class="keyword">for</span> i = 1:length
+    <span class="keyword">if</span> i &lt; (1 + 0.25*fs)
+        xx(i) = cos(2*pi * 220 * t(i));
+    <span class="keyword">elseif</span> i &gt; (1 + 0.3*fs) &amp;&amp; i &lt; (1 + 0.55*fs)
+        xx(i) = cos(2*pi * 880 * t(i));
+    <span class="keyword">elseif</span> i &gt; (1 + 0.6*fs) &amp;&amp; i &lt; (1 + 0.85*fs)
+        xx(i) = cos(2*pi * 440 * t(i)) + cos(2*pi * 1760 * t(i));
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+figure;
+plot(t, xx);
+sgtitle(<span class="string">'Piano Frequency Sinusoidal Signal'</span>);
+xlabel(<span class="string">'Time (s)'</span>);
+ylabel(<span class="string">'x(t)'</span>);
+grid <span class="string">on</span>;
+hold <span class="string">off</span>;
+
+<span class="comment">% 5.3 (b) Filter xx through five filters</span>
+
+
+<span class="comment">% Put coefficients through each filter from 5.2</span>
+xx_2 = filter(hoct2, 1, xx);
+xx_3 = filter(hoct3, 1, xx);
+xx_4 = filter(hoct4, 1, xx);
+xx_5 = filter(hoct5, 1, xx);
+xx_6 = filter(hoct6, 1, xx);
+
+
+<span class="comment">% 5.3 (c) Make 5 subplots in one figure using subplot(5,1,n)</span>
+
+figure;
+subplot(5,1,1);
+sgtitle(<span class="string">'Filtered x(t) Signal Using Section 5.2 Filter Bank'</span>);
+plot(t, xx_2);
+ylabel(<span class="string">'Octave 2'</span>);
+xlabel(<span class="string">'Time (s)'</span>);
+
+subplot(5,1,2);
+plot(t, xx_3);
+ylabel(<span class="string">'Octave 3'</span>);
+xlabel(<span class="string">'Time (s)'</span>);
+
+subplot(5,1,3);
+plot(t, xx_4);
+ylabel(<span class="string">'Octave 4'</span>);
+xlabel(<span class="string">'Time (s)'</span>);
+
+subplot(5,1,4);
+plot(t, xx_5);
+ylabel(<span class="string">'Octave 5'</span>);
+xlabel(<span class="string">'Time (s)'</span>);
+
+subplot(5,1,5);
+plot(t, xx_6);
+ylabel(<span class="string">'Octave 6'</span>);
+xlabel(<span class="string">'Time (s)'</span>);
+
+<span class="comment">% 5.3 (d) Validate that output signals have correct magnitude &amp; phase</span>
+
+<span class="comment">% After observing the 5.3 (c) figure and confirming the output signals have</span>
+<span class="comment">% the correct magnitude and phase, the following signals are found to be in</span>
+<span class="comment">% the designated octaves:</span>
+<span class="comment">%       220 Hz:  octave 3</span>
+<span class="comment">%       880 Hz:  octave 5</span>
+<span class="comment">%       440 Hz:  octave 4</span>
+<span class="comment">%       1760 Hz: octave 6</span>
+
+
+<span class="comment">% 5.3 (e) Transient effects at transitions</span>
+
+<span class="comment">% Observing the 5.3 (c) figure, the transient effect of each FIR filter</span>
+<span class="comment">% is directly proportional to the value of L, where the transient grows</span>
+<span class="comment">% larger as L increases and vice versa</span>
+
+transient_1 = (L2-1)/fs;
+transient_2 = (L3-1)/fs;
+transient_3 = (L4-1)/fs;
+transient_4 = (L5-1)/fs;
+transient_5 = (L6-1)/fs;
+</pre>
+<img vspace="5" hspace="5" src="main5_3_01.png" alt=""> <img vspace="5" hspace="5" src="main5_3_02.png" alt=""> <img vspace="5" hspace="5" src="main5_3_03.png" alt=""> <p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+% Section 5.3: Piano Octave Decoding
+%   Maili Vu (u1169721)
+
+% frequency = 2^((n-49)/12) * 440 Hz
+%   where 'n' = key #
+
+clear;
+close all;
+clc;
+
+% Pulling information from Sections 5.1 & 5.2
+% addpath('LabP14_Exercise5.2\');
+
+% Get the filter coefficients from 5.2
+% Q512;
+run("main5_2.m");   % Run section 5.1 and 5.2 for BP Filters
+
+% 5.3 (a) generate x(t) using sampling rate fs = 8000 Hz
+fs = 8000;
+t = 0:1/fs:0.85;
+length = size(t,2);
+xx = zeros(1,length);
+
+% x(t) = cos(2*pi*220*t) for 0s <= t < 0.25s
+% x(t) = cos(2*pi*880*t) for 0.3s <= t < 0.55s
+% x(t) = cos(2*pi*440*t) + cos(2*pi*1760*t) for 0.6s <= t < 0.85s
+for i = 1:length
+    if i < (1 + 0.25*fs)
+        xx(i) = cos(2*pi * 220 * t(i));
+    elseif i > (1 + 0.3*fs) && i < (1 + 0.55*fs)
+        xx(i) = cos(2*pi * 880 * t(i));
+    elseif i > (1 + 0.6*fs) && i < (1 + 0.85*fs)
+        xx(i) = cos(2*pi * 440 * t(i)) + cos(2*pi * 1760 * t(i));
+    end
+end
+
+figure;
+plot(t, xx);
+sgtitle('Piano Frequency Sinusoidal Signal');
+xlabel('Time (s)');
+ylabel('x(t)');
+grid on;
+hold off;
+
+% 5.3 (b) Filter xx through five filters
+
+
+% Put coefficients through each filter from 5.2
+xx_2 = filter(hoct2, 1, xx);
+xx_3 = filter(hoct3, 1, xx);
+xx_4 = filter(hoct4, 1, xx);
+xx_5 = filter(hoct5, 1, xx);
+xx_6 = filter(hoct6, 1, xx);
+
+
+% 5.3 (c) Make 5 subplots in one figure using subplot(5,1,n)
+
+figure;
+subplot(5,1,1);
+sgtitle('Filtered x(t) Signal Using Section 5.2 Filter Bank');
+plot(t, xx_2);
+ylabel('Octave 2');
+xlabel('Time (s)');
+
+subplot(5,1,2);
+plot(t, xx_3);
+ylabel('Octave 3');
+xlabel('Time (s)');
+
+subplot(5,1,3);
+plot(t, xx_4);
+ylabel('Octave 4');
+xlabel('Time (s)');
+
+subplot(5,1,4);
+plot(t, xx_5);
+ylabel('Octave 5');
+xlabel('Time (s)');
+
+subplot(5,1,5);
+plot(t, xx_6);
+ylabel('Octave 6');
+xlabel('Time (s)');
+
+% 5.3 (d) Validate that output signals have correct magnitude & phase
+
+% After observing the 5.3 (c) figure and confirming the output signals have
+% the correct magnitude and phase, the following signals are found to be in
+% the designated octaves:
+%       220 Hz:  octave 3
+%       880 Hz:  octave 5
+%       440 Hz:  octave 4
+%       1760 Hz: octave 6
+
+
+% 5.3 (e) Transient effects at transitions
+
+% Observing the 5.3 (c) figure, the transient effect of each FIR filter
+% is directly proportional to the value of L, where the transient grows
+% larger as L increases and vice versa
+
+transient_1 = (L2-1)/fs;
+transient_2 = (L3-1)/fs;
+transient_3 = (L4-1)/fs;
+transient_4 = (L5-1)/fs;
+transient_5 = (L6-1)/fs;
+
+##### SOURCE END #####
+-->
+</body>
+</html>

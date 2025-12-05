@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>LAB P14 - Group 6 - Tyson Skogerboe, Emily Yang, Maili Vu, Chandra Mauli Dubey</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-12-04">
+<meta name="DC.source" content="main.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>LAB P14 - Group 6 - Tyson Skogerboe, Emily Yang, Maili Vu, Chandra Mauli Dubey</h1>
+<!--introduction-->
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">FOR MORE DETAILED REPORTS</a>
+</li>
+<li>
+<a href="#2">Section 4.1 - Windowing Testing</a>
+</li>
+<li>
+<a href="#3">Section 4.2 - Windowing Testing</a>
+</li>
+<li>
+<a href="#4">4.2(c) Output signal of the length-41 Hamming BPF (by hand summary)</a>
+</li>
+<li>
+<a href="#5">4.2(d) Why the L = 41 BPF passes ω = &plusmn;0.25π and rejects others</a>
+</li>
+<li>
+<a href="#6">Section 4.1 &amp; 4.2 Combined Plots</a>
+</li>
+<li>
+<a href="#7">Section 5.1, 5.2, 5.3</a>
+</li>
+<li>
+<a href="#8">5.1 - Edge and center frequencies for Octaves 2-6</a>
+</li>
+<li>
+<a href="#9">5.2 - Bandpass Filter design</a>
+</li>
+<li>
+<a href="#10">5.3 (d) Validate that output signals have correct magnitude &amp; phase</a>
+</li>
+<li>
+<a href="#11">5.3 (e) Transient effects at transitions</a>
+</li>
+</ul>
+</div>
+<h2 id="1">FOR MORE DETAILED REPORTS</h2>
+<p>See LabP14_Exercise4\html\main4_1.html LabP14_Exercise4\html\main4_2.html LabP14_Exercise5\html\main5_1.html LabP14_Exercise5\html\main5_2.html LabP14_Exercise5\html\main5_3.html</p>
+<pre class="codeinput">clear;
+close <span class="string">all</span>;
+</pre>
+<h2 id="2">Section 4.1 - Windowing Testing</h2>
+<pre class="codeinput">run(<span class="string">'LabP14_Exercise4\main4_1.m'</span>);      <span class="comment">% Run section 4.1</span>
+
+<span class="comment">% The width of the passband is inversely related to filter length (L). In</span>
+<span class="comment">% summary, longer filters lead to higher frequency selectivity.</span>
+</pre>
+<img vspace="5" hspace="5" src="main_01.png" alt=""> <img vspace="5" hspace="5" src="main_02.png" alt=""> <img vspace="5" hspace="5" src="main_03.png" alt=""> <img vspace="5" hspace="5" src="main_04.png" alt=""> <h2 id="3">Section 4.2 - Windowing Testing</h2>
+<pre class="codeinput">run(<span class="string">'LabP14_Exercise4\main4_2.m'</span>);      <span class="comment">% Run section 4.2</span>
+<span class="comment">% For L = 41, the magnitude response shows a clear band centered at ω = 0.25π,</span>
+<span class="comment">%  indicating that the Hamming BPF successfully passes the desired frequency component.</span>
+<span class="comment">%  The filter exhibits strong attenuation at the other tested frequencies</span>
+<span class="comment">% (0, 0.1π, 0.4π, 0.5π, and 0.75π), with magnitude values near zero,</span>
+<span class="comment">% confirming that these lie in the stopband.</span>
+<span class="comment">%  The Hamming window produces very small stopband ripples (&lt;0.01),</span>
+<span class="comment">%  consistent with the lab description.</span>
+<span class="comment">%  The phase response is approximately linear in the passband,</span>
+<span class="comment">% as expected for a symmetric FIR filter.</span>
+
+<span class="comment">% From the measured passband widths, we observe that the width of the</span>
+<span class="comment">% passband is inversely related to the filter length L. When L is</span>
+<span class="comment">% approximately doubled (e.g., from 41 to 81), the passband width is</span>
+<span class="comment">% roughly halved. When L is approximately halved (e.g., from 41 to 21),</span>
+<span class="comment">% the passband width roughly doubles. Thus, longer Hamming FIR filters</span>
+<span class="comment">% produce narrower passbands (better frequency selectivity), while</span>
+<span class="comment">% shorter filters produce wider passbands.</span>
+</pre>
+<pre class="codeoutput">    omega_over_pi    Magnitude    Phase_rad
+    _____________    _________    _________
+
+           0         0.0073529      3.1416 
+         0.1         0.0073529     -3.1416 
+        0.25                 1      3.1416 
+         0.4         0.0073529     -3.1416 
+         0.5         0.0073529     -3.1416 
+        0.75         0.0073529     -3.1416 
+
+Passband Edges and Width for L = 21, 41, 81:
+    L     omega_low_over_pi    omega_high_over_pi    width_over_pi
+    __    _________________    __________________    _____________
+
+    21         0.15918              0.33984             0.18066   
+    41         0.20605              0.29395            0.087891   
+    81         0.22754              0.27246            0.044922   
+
+</pre>
+<img vspace="5" hspace="5" src="main_05.png" alt=""> <img vspace="5" hspace="5" src="main_06.png" alt=""> <h2 id="4">4.2(c) Output signal of the length-41 Hamming BPF (by hand summary)</h2>
+<p>The input to the L = 41 Hamming BPF is x[n] = 2 + 2*cos(0.1*pi*n + pi/3) + cos(0.25*pi*n - pi/3). Using the magnitude and phase from 4.2(a) we have, for this filter: <tt>H(0)</tt> &asymp; 0.00735, &ang;H(0) &asymp; π (DC term, stopband) <tt>H(0.1π)</tt> &asymp; 0.00735, &ang;H(0.1π) &asymp; -π (tone 1, stopband) <tt>H(0.25π)</tt> &asymp; 1.0, &ang;H(0.25π) = φ_c (tone 2, passband)</p>
+<p>For an LTI system with frequency response H(e^{jω}), an input A*cos(ωn + φ) produces an output A|H(e^{jω})| * cos(ωn + φ + &ang;H(e^{jω})).</p>
+<p>Applying this to each term of x[n]: DC term (ω = 0): y0[n] = 2|H(0)|cos(0 + &ang;H(0)) &asymp; 2*0.00735*cos(π) &asymp; -0.0147 &rarr; a very small negative constant (heavily attenuated).</p>
+<pre class="language-matlab">Tone <span class="string">1</span> <span class="string">(ω = 0.1π):</span>
+    y1[n] = 2|H(0.1π)|cos(0.1π*n + pi/3 + &ang;H(0.1π))
+          &asymp; 2*0.00735*cos(0.1π*n + (phase)) &asymp; 0.0147*cos(0.1π*n + &hellip;)
+    &rarr; very <span class="string">small</span> <span class="string">amplitude</span>, also <span class="string">in</span> <span class="string">the</span> <span class="string">stopband.</span>
+</pre>
+<pre class="language-matlab">Tone <span class="string">2</span> <span class="string">(ω = 0.25π):</span>
+    y2[n] = |H(0.25π)|cos(0.25π*n - pi/3 + &ang;H(0.25π))
+          &asymp; cos(0.25π*n - pi/3 + φ_c)
+    &rarr; lies <span class="string">at</span> <span class="string">the</span> <span class="string">center</span> <span class="string">of</span> <span class="string">the</span> <span class="string">passband</span> <span class="string">and</span> <span class="string">passes</span> <span class="string">with</span> <span class="string">gain</span> <span class="string">&asymp;</span> <span class="string">1.</span>
+</pre>
+<p>Combining the contributions, the output can be written as y[n] = y0[n] + y1[n] + y2[n] y[n] &asymp; -0.0147+0.0147 cos⁡(0.1πn-2π/3)+ cos⁡(0.25πn+2π/3) Thus, the output is dominated by the 0.25π sinusoid, while the DC and 0.1π components are almost completely suppressed because they lie in the stopband of the bandpass filter.</p>
+<h2 id="5">4.2(d) Why the L = 41 BPF passes ω = &plusmn;0.25π and rejects others</h2>
+<p>The frequency response of the length-41 Hamming BPF has a narrow passband centered at ω = 0.25π (and, by symmetry, at ω = -0.25π). From part (b), the 50% passband edges for L = 41 are approximately at ω_low/π &asymp; 0.2067 and ω_high/π &asymp; 0.294, so only frequencies in the interval [0.2067π, 0.294π] are passed with significant gain.</p>
+<p>The input signal in part (c) contains components at ω = 0, 0.1π, and 0.25π. The components at 0 and 0.1π lie well outside the passband and therefore fall in the stopband where <tt>H(e^{jω})</tt> is close to zero. These terms are strongly attenuated and appear in the output only as very small residuals.</p>
+<p>In contrast, the component at ω = 0.25π lies at the center of the passband, where <tt>H(e^{j0.25π})</tt> &asymp; 1 and the phase response is roughly linear. As a result, this sinusoid is passed with almost no attenuation and only a phase shift determined by &ang;H(e^{j0.25π}).</p>
+<p>Because the passband of the L = 41 Hamming BPF is narrow and centered at &plusmn;0.25π, the filter is able to pass the components at ω = &plusmn;0.25π while reducing or rejecting all other frequency components of the input signal.</p>
+<h2 id="6">Section 4.1 &amp; 4.2 Combined Plots</h2>
+<pre class="codeinput">run(<span class="string">"LabP14_Exercise4\LabP14_Exercise4.1\main_combined.m"</span>);
+</pre>
+<pre class="codeoutput">Passband Edges and Width for L = 21, 41, 81:
+    L     low_rect    high_rect    width_rect    low_hamm    high_hamm    width_hamm
+    __    ________    _________    __________    ________    _________    __________
+
+    21    0.18652      0.30664       0.12012     0.15918      0.33984       0.18066 
+    41    0.22266       0.2793      0.056641     0.20605      0.29395      0.087891 
+    81    0.23633      0.26465       0.02832     0.22754      0.27246      0.044922 
+
+</pre>
+<img vspace="5" hspace="5" src="main_07.png" alt=""> <h2 id="7">Section 5.1, 5.2, 5.3</h2>
+<h2 id="8">5.1 - Edge and center frequencies for Octaves 2-6</h2>
+<pre class="codeinput">
+<span class="comment">% | Octave |  Keys | Lower f (Hz) | Upper f (Hz) | Center f (Hz) | Lower w (rad/sample) | Upper w (rad/sample) | Center w (rad/sample) |</span>
+<span class="comment">% | -----: | :---: | -----------: | -----------: | ------------: | -------------------: | -------------------: | --------------------: |</span>
+<span class="comment">% |      2 | 16&ndash;27 |    65.406 Hz |   123.471 Hz |     94.439 Hz |             0.051370 |             0.096974 |              0.074172 |</span>
+<span class="comment">% |      3 | 28&ndash;39 |   130.813 Hz |   246.942 Hz |    188.877 Hz |             0.102740 |             0.193948 |              0.148344 |</span>
+<span class="comment">% |      4 | 40&ndash;51 |   261.626 Hz |   493.883 Hz |    377.755 Hz |             0.205480 |             0.387896 |              0.296688 |</span>
+<span class="comment">% |      5 | 52&ndash;63 |   523.251 Hz |   987.767 Hz |    755.509 Hz |             0.410960 |             0.775790 |              0.593375 |</span>
+<span class="comment">% |      6 | 64&ndash;75 |  1046.502 Hz |  1975.533 Hz |   1511.018 Hz |             0.821921 |             1.551580 |              1.186751 |</span>
+</pre>
+<h2 id="9">5.2 - Bandpass Filter design</h2>
+<p>Octave 2: L = 250</p>
+<p>Octave 3: L = 125</p>
+<p>Octave 4: L = 63</p>
+<p>Octave 5: L = 31</p>
+<p>Octave 6: L = 16</p>
+<pre class="codeinput">run(<span class="string">"LabP14_Exercise5\main5_3.m"</span>);      <span class="comment">% Run section 5.3 - Includes 5.1 and 5.2</span>
+</pre>
+<img vspace="5" hspace="5" src="main_08.png" alt=""> <img vspace="5" hspace="5" src="main_09.png" alt=""> <img vspace="5" hspace="5" src="main_10.png" alt=""> <h2 id="10">5.3 (d) Validate that output signals have correct magnitude &amp; phase</h2>
+<p>After observing the 5.3 (c) figure and confirming the output signals have the correct magnitude and phase, the following signals are found to be in the designated octaves: 220 Hz: octave 3 880 Hz: octave 5 440 Hz: octave 4 1760 Hz: octave 6</p>
+<h2 id="11">5.3 (e) Transient effects at transitions</h2>
+<p>Observing the 5.3 (c) figure, the transient effect of each FIR filter is directly proportional to the value of L, where the transient grows larger as L increases and vice versa</p>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% LAB P14 - Group 6 - Tyson Skogerboe, Emily Yang, Maili Vu, Chandra Mauli Dubey
+
+%% FOR MORE DETAILED REPORTS
+% See 
+% LabP14_Exercise4\html\main4_1.html
+% LabP14_Exercise4\html\main4_2.html
+% LabP14_Exercise5\html\main5_1.html
+% LabP14_Exercise5\html\main5_2.html
+% LabP14_Exercise5\html\main5_3.html
+
+clear;
+close all;
+%% Section 4.1 - Windowing Testing
+run('LabP14_Exercise4\main4_1.m');      % Run section 4.1
+
+% The width of the passband is inversely related to filter length (L). In
+% summary, longer filters lead to higher frequency selectivity.
+
+%% Section 4.2 - Windowing Testing
+run('LabP14_Exercise4\main4_2.m');      % Run section 4.2
+% For L = 41, the magnitude response shows a clear band centered at ω = 0.25π,
+%  indicating that the Hamming BPF successfully passes the desired frequency component.
+%  The filter exhibits strong attenuation at the other tested frequencies 
+% (0, 0.1π, 0.4π, 0.5π, and 0.75π), with magnitude values near zero, 
+% confirming that these lie in the stopband.
+%  The Hamming window produces very small stopband ripples (<0.01),
+%  consistent with the lab description.
+%  The phase response is approximately linear in the passband, 
+% as expected for a symmetric FIR filter. 
+
+% From the measured passband widths, we observe that the width of the
+% passband is inversely related to the filter length L. When L is
+% approximately doubled (e.g., from 41 to 81), the passband width is
+% roughly halved. When L is approximately halved (e.g., from 41 to 21),
+% the passband width roughly doubles. Thus, longer Hamming FIR filters
+% produce narrower passbands (better frequency selectivity), while
+% shorter filters produce wider passbands.
+
+%% 4.2(c) Output signal of the length-41 Hamming BPF (by hand summary)
+% The input to the L = 41 Hamming BPF is
+%   x[n] = 2 + 2*cos(0.1*pi*n + pi/3) + cos(0.25*pi*n - pi/3).
+% Using the magnitude and phase from 4.2(a) we have, for this filter:
+%   |H(0)|       ≈ 0.00735,  ∠H(0)       ≈ π        (DC term, stopband)
+%   |H(0.1π)|    ≈ 0.00735,  ∠H(0.1π)    ≈ -π       (tone 1, stopband)
+%   |H(0.25π)|   ≈ 1.0,      ∠H(0.25π)   = φ_c      (tone 2, passband)
+%
+% For an LTI system with frequency response H(e^{jω}), an input
+%   A*cos(ωn + φ)
+% produces an output
+%   A|H(e^{jω})| * cos(ωn + φ + ∠H(e^{jω})).
+%
+% Applying this to each term of x[n]:
+%   DC term (ω = 0):
+%       y0[n] = 2|H(0)|cos(0 + ∠H(0)) ≈ 2*0.00735*cos(π) ≈ -0.0147
+%       → a very small negative constant (heavily attenuated).
+%
+%   Tone 1 (ω = 0.1π):
+%       y1[n] = 2|H(0.1π)|cos(0.1π*n + pi/3 + ∠H(0.1π))
+%             ≈ 2*0.00735*cos(0.1π*n + (phase)) ≈ 0.0147*cos(0.1π*n + …)
+%       → very small amplitude, also in the stopband.
+%
+%   Tone 2 (ω = 0.25π):
+%       y2[n] = |H(0.25π)|cos(0.25π*n - pi/3 + ∠H(0.25π))
+%             ≈ cos(0.25π*n - pi/3 + φ_c)
+%       → lies at the center of the passband and passes with gain ≈ 1.
+%
+% Combining the contributions, the output can be written as
+%   y[n] = y0[n] + y1[n] + y2[n]
+%   y[n] ≈ -0.0147+0.0147 cos⁡(0.1πn-2π/3)+ cos⁡(0.25πn+2π/3)
+% Thus, the output is dominated by the 0.25π sinusoid, while the DC and
+% 0.1π components are almost completely suppressed because they lie in
+% the stopband of the bandpass filter.
+
+%% 4.2(d) Why the L = 41 BPF passes ω = ±0.25π and rejects others
+% The frequency response of the length-41 Hamming BPF has a narrow
+% passband centered at ω = 0.25π (and, by symmetry, at ω = -0.25π).
+% From part (b), the 50% passband edges for L = 41 are approximately
+% at ω_low/π ≈ 0.2067 and ω_high/π ≈ 0.294, so only frequencies in
+% the interval [0.2067π, 0.294π] are passed with significant gain.
+%
+% The input signal in part (c) contains components at ω = 0, 0.1π,
+% and 0.25π. The components at 0 and 0.1π lie well outside the
+% passband and therefore fall in the stopband where |H(e^{jω})| is
+% close to zero. These terms are strongly attenuated and appear in
+% the output only as very small residuals.
+%
+% In contrast, the component at ω = 0.25π lies at the center of the
+% passband, where |H(e^{j0.25π})| ≈ 1 and the phase response is
+% roughly linear. As a result, this sinusoid is passed with almost
+% no attenuation and only a phase shift determined by ∠H(e^{j0.25π}).
+%
+% Because the passband of the L = 41 Hamming BPF is narrow and
+% centered at ±0.25π, the filter is able to pass the components at
+% ω = ±0.25π while reducing or rejecting all other frequency
+% components of the input signal.
+
+%% Section 4.1 & 4.2 Combined Plots
+run("LabP14_Exercise4\LabP14_Exercise4.1\main_combined.m");
+
+%% Section 5.1, 5.2, 5.3
+
+%% 5.1 - Edge and center frequencies for Octaves 2-6
+
+% | Octave |  Keys | Lower f (Hz) | Upper f (Hz) | Center f (Hz) | Lower w (rad/sample) | Upper w (rad/sample) | Center w (rad/sample) |
+% | REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-: | :REPLACE_WITH_DASH_DASH-: | REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-: | REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-: | REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH: | REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-: | REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-: | REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH: |
+% |      2 | 16–27 |    65.406 Hz |   123.471 Hz |     94.439 Hz |             0.051370 |             0.096974 |              0.074172 |
+% |      3 | 28–39 |   130.813 Hz |   246.942 Hz |    188.877 Hz |             0.102740 |             0.193948 |              0.148344 |
+% |      4 | 40–51 |   261.626 Hz |   493.883 Hz |    377.755 Hz |             0.205480 |             0.387896 |              0.296688 |
+% |      5 | 52–63 |   523.251 Hz |   987.767 Hz |    755.509 Hz |             0.410960 |             0.775790 |              0.593375 |
+% |      6 | 64–75 |  1046.502 Hz |  1975.533 Hz |   1511.018 Hz |             0.821921 |             1.551580 |              1.186751 |
+
+
+%% 5.2 - Bandpass Filter design
+% Octave 2: L = 250
+%
+% Octave 3: L = 125
+%
+% Octave 4: L = 63
+%
+% Octave 5: L = 31
+%
+% Octave 6: L = 16
+
+run("LabP14_Exercise5\main5_3.m");      % Run section 5.3 - Includes 5.1 and 5.2
+
+%% 5.3 (d) Validate that output signals have correct magnitude & phase
+% After observing the 5.3 (c) figure and confirming the output signals have
+% the correct magnitude and phase, the following signals are found to be in
+% the designated octaves:
+%       220 Hz:  octave 3
+%       880 Hz:  octave 5
+%       440 Hz:  octave 4
+%       1760 Hz: octave 6
+
+
+%% 5.3 (e) Transient effects at transitions
+% Observing the 5.3 (c) figure, the transient effect of each FIR filter
+% is directly proportional to the value of L, where the transient grows
+% larger as L increases and vice versa
+
+##### SOURCE END #####
+-->
+</body>
+</html>
