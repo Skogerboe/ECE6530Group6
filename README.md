@@ -52,14 +52,4 @@ How to run code:
 
 HMTL REPORTS:
 
-[main.html](https://github.com/user-attachments/files/23952910/main.html)
-<img width="85" height="63" alt="main" src="https://github.com/user-attachments/assets/6afacbdd-519e-4450-918f-de2de4a131f9" /><img width="560" height="420" alt="main_10" src="https://github.com/user-attachments/assets/932f5f61-febe-481d-870e-2bb7e9958247" />
-<img width="560" height="420" alt="main_09" src="https://github.com/user-attachments/assets/b5a9cb60-a3c8-4042-b927-15db53d182ae" />
-<img width="560" height="420" alt="main_08" src="https://github.com/user-attachments/assets/30215f11-4927-4be7-a876-3175b5d085ef" />
-<img width="560" height="420" alt="main_07" src="https://github.com/user-attachments/assets/3c45d3b7-edcf-4c58-8be6-8e0ee98dcabd" />
-<img width="560" height="420" alt="main_06" src="https://github.com/user-attachments/assets/86224164-8191-42d6-8301-2c42014a6b01" />
-<img width="560" height="420" alt="main_05" src="https://github.com/user-attachments/assets/a0eb2b9d-76b1-40c1-bc37-93628771c2e2" />
-<img width="560" height="420" alt="main_04" src="https://github.com/user-attachments/assets/9ee8ba75-0a74-4606-a5b8-ff3830063d7e" />
-<img width="560" height="420" alt="main_03" src="https://github.com/user-attachments/assets/adbb0e78-f5c2-4c31-8242-754f788b00a2" />
-<img width="560" height="420" alt="main_02" src="https://github.com/user-attachments/assets/dda29468-7d20-4fd3-b468-e4e0c13cc65e" />
-<img width="560" height="420" alt="main_01" src="https://github.com/user-attachments/assets/59b6af76-37aa-4e4f-866c-71f125274d60" />
+https://skogerboe.github.io/main.html
