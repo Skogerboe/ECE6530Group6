@@ -19,18 +19,30 @@ Overview:
 
 
 Group Member Tasks:
-  - Tyson Skogerboe: Sectin 5.1 and 5.2
+  - Tyson Skogerboe: Section 5.1 and 5.2
   - Maili Vu: Section 5.3
   - Emily Yang: Section 4.1
   - Chandra Mauli Dubey: Section 4.2
 
 How to run code:
-  - Download the following MATLAB scripts from this repository:
-    1) BPF_4_1_poster.m
-    2) BPF_5_3.m
-    3) Q512.m
-  - Place all three files in the same MATLAB folder.
-  - Run BPF_4_1_poster.m to generate the filter plots.
-  - Run BPF_5_3.3 (uses Q512.m) to generate the filter-bank results.
+  - Download the zip file 'OctaveDecodingwithBandFilters_group6.zip'
+  - Navigate to and unzip the downloaded zip.
+  - Set Matlab path as the location the zip file was extracted to
+  - Open 'main.m'
+  - Running 'main.m' will run 4.1, 4.2, 5.1, 5.2, 5.3 and will provide all necessary plots, etc.
+ If you want to run individual scripts:
+  - Download the zip file 'OctaveDecodingwithBandFilters_group6.zip'
+  - Navigate to and unzip the downloaded zip.
+  - Set Matlab path as the location the zip file was extracted to
+  For Running section 4 scripts:
+   - Open this folder and add it to Matlab path: LabP14_Exercise4
+   - Open and run 'main4_1.m', 'main4_2.m', and/or 'main_combined.m'.
+  For running section 5 scripts:
+   - Open this folder and add it to Matlab path: LabP14_Exercise5
+   - Open and run 'main5_1.m', 'main5_2.m', and/or 'main5_3.m'.
+   
+ ** Regardless of running all scripts as one, or running them individually, it is best to download the zip.
+ ** Some of the indivual scripts reference some of the other scripts, so maintaining the paths will allow for running without error.
+ ** Downloading individual scripts and running them may result in failed script execution since paths are no longer maintained.
   
   
