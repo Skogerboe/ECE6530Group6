@@ -30,13 +30,16 @@ How to run code:
   - Set Matlab path as the location the zip file was extracted to
   - Open 'main.m'
   - Running 'main.m' will run 4.1, 4.2, 5.1, 5.2, 5.3 and will provide all necessary plots, etc.
+
  If you want to run individual scripts:
   - Download the zip file 'OctaveDecodingwithBandFilters_group6.zip'
   - Navigate to and unzip the downloaded zip.
   - Set Matlab path as the location the zip file was extracted to
+    
   For Running section 4 scripts:
    - Open this folder and add it to Matlab path: LabP14_Exercise4
    - Open and run 'main4_1.m', 'main4_2.m', and/or 'main_combined.m'.
+     
   For running section 5 scripts:
    - Open this folder and add it to Matlab path: LabP14_Exercise5
    - Open and run 'main5_1.m', 'main5_2.m', and/or 'main5_3.m'.
